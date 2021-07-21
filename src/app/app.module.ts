@@ -1,5 +1,5 @@
 ﻿import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
+
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
@@ -14,7 +14,11 @@ import { JwtInterceptor, ErrorInterceptor } from './_helpers';
 import { HomeComponent } from './home';
 import { LoginComponent } from './login';;
 import { ContatosComponent } from './home/contatos/contatos.component'
-import { MatPaginatorModule, MatTableModule } from '@angular/material';
+import { MatTableModule } from '@angular/material';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import {MatSelectModule} from '@angular/material/select';
+import { BrowserModule } from '@angular/platform-browser';
+
 
 @NgModule({
     imports: [
@@ -24,7 +28,8 @@ import { MatPaginatorModule, MatTableModule } from '@angular/material';
         appRoutingModule,
         MatTableModule,
         MatPaginatorModule,
-        BrowserAnimationsModule
+        BrowserAnimationsModule,
+        MatSelectModule
     ],
     declarations: [
         AppComponent,
