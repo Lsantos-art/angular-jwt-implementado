@@ -1,31 +1,43 @@
 
-<div class="mat-elevation-z8">
+<div class="mat-elevation-z8 p-3 rounded">
 <h2>Cadastro de contatos</h2>
+
+<div class="col-md-12 d-flex justify-content-end">
+  <button mat-raised-button color="primary">
+      <mat-icon class="actions" aria-hidden="false" title="Novo contato" (click)="openDialog('CREATE')">
+        group_add
+      </mat-icon>
+  </button>
+</div>
 
   <table mat-table [dataSource]="dataSource">
 
-    <!-- Position Column -->
-    <ng-container matColumnDef="position">
-      <th mat-header-cell *matHeaderCellDef> No. </th>
-      <td mat-cell *matCellDef="let element"> {{element.position}} </td>
-    </ng-container>
-
     <!-- Name Column -->
     <ng-container matColumnDef="name">
-      <th mat-header-cell *matHeaderCellDef> Name </th>
+      <th mat-header-cell *matHeaderCellDef> Nome </th>
       <td mat-cell *matCellDef="let element"> {{element.name}} </td>
     </ng-container>
 
-    <!-- Weight Column -->
-    <ng-container matColumnDef="weight">
-      <th mat-header-cell *matHeaderCellDef> Weight </th>
-      <td mat-cell *matCellDef="let element"> {{element.weight}} </td>
+    <!-- email Column -->
+    <ng-container matColumnDef="email">
+      <th mat-header-cell *matHeaderCellDef> E-mail </th>
+      <td mat-cell *matCellDef="let element"> {{element.email}} </td>
     </ng-container>
 
-    <!-- Symbol Column -->
-    <ng-container matColumnDef="symbol">
-      <th mat-header-cell *matHeaderCellDef> Symbol </th>
-      <td mat-cell *matCellDef="let element"> {{element.symbol}} </td>
+    <!-- actions Column -->
+    <ng-container matColumnDef="actions">
+      <th mat-header-cell *matHeaderCellDef> Ações </th>
+      <td mat-cell *matCellDef="let element">
+        <button mat-icon-button title="Gerenciar telefones do contato">
+          <mat-icon>perm_contact_calendar</mat-icon>
+        </button>
+        <button mat-icon-button title="Editar contato" (click)="openDialog('EDIT', element.id)">
+          <mat-icon>mode_edit</mat-icon>
+        </button>
+        <button mat-icon-button title="Remover contato" (click)="onRemove(element.id)">
+          <mat-icon class="text-danger">delete</mat-icon>
+        </button>
+      </td>
     </ng-container>
 
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>

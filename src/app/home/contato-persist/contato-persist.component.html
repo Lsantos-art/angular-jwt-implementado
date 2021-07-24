@@ -1,0 +1,30 @@
+<h1 mat-dialog-title>Inserir novo contato</h1>
+
+<form [formGroup]="form" (ngSubmit)="validaForm()">
+
+  <mat-form-field appearance="fill">
+    <mat-label>Nome</mat-label>
+    <input id="name" type="text" matInput formControlName="name" [value]="contato.name">
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Email</mat-label>
+    <input id="email" type="text" matInput formControlName="email" [value]="contato.email">
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Link do FaceBook</mat-label>
+    <input id="facebook_link" type="text" matInput formControlName="facebook_link" [value]="contato.facebook_link">
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Link do Linkedin</mat-label>
+    <input id="linkedin_link" type="text" matInput formControlName="linkedin_link" [value]="contato.linkedin_link">
+  </mat-form-field>
+
+  <div mat-dialog-actions class="d-flex justify-content-between">
+    <button mat-button mat-dialog-close>Cancelar</button>
+    <button class="btn btn-success" type="submit">Salvar</button>
+  </div>
+
+</form>
