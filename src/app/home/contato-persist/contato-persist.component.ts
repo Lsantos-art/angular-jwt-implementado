@@ -13,7 +13,9 @@ export class ContatoPersistComponent implements OnInit {
 
   form: FormGroup;
   type: string;
+  id: number;
   contato: Contato = {
+    id: '',
     name: '',
     email: '',
     facebook_link: '',
@@ -27,8 +29,6 @@ export class ContatoPersistComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    console.log(this.data);
-
     this.type = this.data.type;
     this.setType();
     this.formInit();
@@ -36,19 +36,23 @@ export class ContatoPersistComponent implements OnInit {
 
   setType() {
     if (this.type == 'EDIT') {
+
       this.contatosService.edit(this.data.id).subscribe((data: any) => {
         if (data.contato) {
           this.contato = data.contato;
+          this.updateForm();
         }else{
           alert(data.message);
           window.location.reload();
         }
       });
+
     }
   }
 
   formInit() : void {
     this.form = this.formBuilder.group({
+      id: [''],
       name: ['', Validators.required],
       email: ['', Validators.required],
       facebook_link: [''],
@@ -56,14 +60,33 @@ export class ContatoPersistComponent implements OnInit {
     });
   }
 
+  updateForm() : void {
+    this.form.patchValue({
+      id: this.contato.id,
+      name: this.contato.name,
+      email: this.contato.email,
+      facebook_link: this.contato.facebook_link,
+      linkedin_link: this.contato.linkedin_link,
+    });
+  }
+
   validaForm() : void {
-    if (this.form.valid)
-    {
-      this.contatosService.save(this.form).subscribe((data: any) => {
-        alert(data.message);
-        window.location.reload();
-      });
-    }
+
+      if (this.type != 'EDIT' && this.form.valid) {
+
+        this.contatosService.save(this.form).subscribe((data: any) => {
+          alert(data.message);
+          window.location.reload();
+        });
+
+      }else{
+
+        this.contatosService.update(this.form).subscribe((data: any) => {
+          alert(data.message);
+          window.location.reload();
+        });
+
+      }
   }
 
 }

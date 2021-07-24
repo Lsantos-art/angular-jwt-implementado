@@ -1,0 +1,10 @@
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+
+.mat-option {
+  white-space:pre;
+}
+
+#form-telefone {
+  display: flex;
+  align-items: baseline;
+}

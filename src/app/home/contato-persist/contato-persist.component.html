@@ -2,6 +2,8 @@
 
 <form [formGroup]="form" (ngSubmit)="validaForm()">
 
+  <input type="hidden" formControlName="id" [value]="contato.id">
+
   <mat-form-field appearance="fill">
     <mat-label>Nome</mat-label>
     <input id="name" type="text" matInput formControlName="name" [value]="contato.name">

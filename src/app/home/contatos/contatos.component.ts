@@ -4,6 +4,7 @@ import { Contato } from '@app/_interfaces/contato';
 import { ContatoService } from '@app/_services/contato.service';
 import { MatDialog }                 from "@angular/material/dialog";
 import { ContatoPersistComponent } from '../contato-persist/contato-persist.component';
+import { TelefonesComponent } from '../telefones/telefones.component';
 
 @Component({
   selector: 'app-contatos',
@@ -38,12 +39,24 @@ export class ContatosComponent implements AfterViewInit {
     });
   }
 
-  openDialog(type : number, id?: number) : void {
+  openDialogContatoPersist(type : number, id?: number) : void {
     this.dialog.open(ContatoPersistComponent,
         {
           width: '500px',
           data: {
             type: type,
+            id: id,
+          },
+          disableClose: true,
+        }
+    );
+  }
+
+  openDialogTelefone(id: number) : void {
+    this.dialog.open(TelefonesComponent,
+        {
+          width: '980px',
+          data: {
             id: id,
           },
           disableClose: true,

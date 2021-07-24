@@ -1,4 +1,5 @@
 export interface Contato {
+  id?: string;
   name: string;
   email: string;
   facebook_link?: string;

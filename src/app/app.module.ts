@@ -27,6 +27,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { ContatoPersistComponent } from './home/contato-persist/contato-persist.component';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import { FormsModule } from '@angular/forms';
+import { TelefonesComponent } from './home/telefones/telefones.component';
 
 
 @NgModule({
@@ -51,13 +52,16 @@ import { FormsModule } from '@angular/forms';
     ],
     entryComponents: [
       ContatoPersistComponent,
+      TelefonesComponent
     ],
     declarations: [
         AppComponent,
         HomeComponent,
         LoginComponent,
         ContatosComponent,
-        ContatoPersistComponent      ],
+        ContatoPersistComponent,
+        TelefonesComponent
+      ],
     providers: [
         { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
         { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
